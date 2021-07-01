@@ -22,5 +22,8 @@ class EthFlow(Base):
     volume = Column(Float)
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, type, exchange, volume, parent_id):
+        self.type = type
+        self.exchange = exchange
+        self.volume = volume
+        self.parent_id = parent_id
