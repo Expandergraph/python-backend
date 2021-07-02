@@ -72,7 +72,7 @@ class TopExchange(Base):
         self.change = change
         self.first_in = first_in
 
-engine = create_engine('mysql+mysqlconnector://myuser:mypass@bR2021@107.182.26.178:3306/xpander')
+engine = create_engine('')
 
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
