@@ -3,7 +3,7 @@ import enum
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
 
 Base = declarative_base()
 
@@ -55,7 +55,7 @@ class TokensOnExchanges(Base):
         self.volume = volume
 
 
-class TopExchanges(Base):
+class TopExchange(Base):
     __tablename__ = "top_exchanges"
 
     id = Column(Integer, primary_key=True)
@@ -72,3 +72,12 @@ class TopExchanges(Base):
         self.change = change
         self.first_in = first_in
 
+engine = create_engine('mysql+mysqlconnector://myuser:mypass@bR2021@107.182.26.178:3306/xpander')
+
+Base.metadata.create_all(engine)
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+top_exchange = TopExchange(token='GTC', exchange='Binance', balance=100, change=50, first_in=20)
+session.add(top_exchange)
+session.commit()
+session.close()

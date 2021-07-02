@@ -7,7 +7,7 @@ Base = declarative_base()
 
 
 class TopLabel(Base):
-    __tablename__ = "top_label"
+    __tablename__ = "top_labels"
 
     id = Column(Integer, primary_key=True)
     label = Column(String(64))
