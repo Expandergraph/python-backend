@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 #IDE metadata
-**.idea/**
+.idea/**
+.idea/*.*
