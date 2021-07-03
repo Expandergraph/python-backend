@@ -1,11 +1,8 @@
 import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
-
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()
+from base import Base
 
 
 class EthFlowTypeEnum(enum.Enum):
@@ -13,17 +10,18 @@ class EthFlowTypeEnum(enum.Enum):
     outgoing = 2
 
 
-class EthFlow(Base):
-    __tablename__ = "eth_flow"
+class Counterparties(Base):
+    __tablename__ = "counterparties"
 
     id = Column(Integer, primary_key=True)
-    type = Column(Enum(EthFlowTypeEnum))
+    flow_type = Column(Enum(EthFlowTypeEnum))
     exchange = Column(String(64))
     volume = Column(Float)
+    address = Column(String(64))
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, type, exchange, volume, parent_id):
-        self.type = type
+    def __init__(self, flow_type, exchange, volume, parent_id):
+        self.flow_type = flow_type
         self.exchange = exchange
         self.volume = volume
         self.parent_id = parent_id

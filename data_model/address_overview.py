@@ -5,10 +5,9 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-from .wallet_profiller import EthFlow
+from wallet_profiller import Counterparties
 
-Base = declarative_base()
-
+from base import Base
 
 class Label(Base):
     __tablename__ = "label"
@@ -48,7 +47,7 @@ class DailyActivity(Base):
 
 
 class HourlyActivity(Base):
-    __tablename__ = "daily_activities"
+    __tablename__ = "hourly_activities"
     id = Column(Integer, primary_key=True)
     date = Column(Date)
     transactions = Column(Integer)
@@ -69,8 +68,13 @@ class Address(Base):
     token_balances = relationship(TokenBalance)
     daily_activities = relationship(DailyActivity)
     hourly_activities = relationship(HourlyActivity)
-    eth_flow = relationship(EthFlow)
+    counter_parties = relationship(Counterparties)
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, address, eth_balance, token_balances, daily_activities, hourly_activities, counter_parties):
+        self.address = address
+        self.eth_balance = eth_balance
+        self.token_balances = token_balances
+        self.daily_activities = daily_activities
+        self.hourly_activities = hourly_activities
+        self.counter_parties = counter_parties
 

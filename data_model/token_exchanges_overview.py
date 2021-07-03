@@ -1,12 +1,8 @@
 import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
-
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
-
-Base = declarative_base()
-
+from base import Base
 
 class TokenBalanceTypeEnum(enum.Enum):
     dex_traders = 1
@@ -72,12 +68,3 @@ class TopExchange(Base):
         self.change = change
         self.first_in = first_in
 
-engine = create_engine('')
-
-Base.metadata.create_all(engine)
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
-top_exchange = TopExchange(token='GTC', exchange='Binance', balance=100, change=50, first_in=20)
-session.add(top_exchange)
-session.commit()
-session.close()
