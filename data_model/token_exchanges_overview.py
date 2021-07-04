@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship, sessionmaker
 from base import Base
 
+
 class TokenBalanceTypeEnum(enum.Enum):
     dex_traders = 1
     exchanges = 2
@@ -67,4 +68,3 @@ class TopExchange(Base):
         self.balance = balance
         self.change = change
         self.first_in = first_in
-

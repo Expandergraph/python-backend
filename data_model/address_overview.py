@@ -17,9 +17,8 @@ class Label(Base):
     name = Column(String(64), unique=True)
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, name, parent_id):
+    def __init__(self, name):
         self.name = name
-        self.parent_id = parent_id
 
 
 class TokenBalance(Base):
@@ -30,10 +29,9 @@ class TokenBalance(Base):
     balance = Column(Float)
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, token, balance, parent_id):
+    def __init__(self, token, balance):
         self.token = token
         self.balance = balance
-        self.parent_id = parent_id
 
 
 class DailyActivity(Base):
@@ -43,10 +41,9 @@ class DailyActivity(Base):
     transactions = Column(Integer)
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, date, transactions, parent_id):
+    def __init__(self, date, transactions):
         self.date = date
         self.transactions = transactions
-        self.parent_id = parent_id
 
 
 class HourlyActivity(Base):
@@ -56,10 +53,9 @@ class HourlyActivity(Base):
     transactions = Column(Integer)
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, date, transactions, parent_id):
+    def __init__(self, date, transactions):
         self.date = date
         self.transactions = transactions
-        self.parent_id = parent_id
 
 
 class Address(Base):
@@ -67,16 +63,18 @@ class Address(Base):
 
     id = Column(Integer, primary_key=True)
     address = Column(String(64), unique=True)
-    label = relationship(Label)
     eth_balance = Column(Float)
+    labels = relationship(Label)
     token_balances = relationship(TokenBalance)
     daily_activities = relationship(DailyActivity)
     hourly_activities = relationship(HourlyActivity)
     counter_parties = relationship(Counterparties)
 
-    def __init__(self, address, eth_balance, token_balances, daily_activities, hourly_activities, counter_parties):
+    def __init__(self, address, eth_balance=0, labels=[], token_balances=[], daily_activities=[],
+                 hourly_activities=[], counter_parties=[]):
         self.address = address
         self.eth_balance = eth_balance
+        self.labels = labels
         self.token_balances = token_balances
         self.daily_activities = daily_activities
         self.hourly_activities = hourly_activities

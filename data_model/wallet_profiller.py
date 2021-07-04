@@ -20,8 +20,7 @@ class Counterparties(Base):
     address = Column(String(64))
     parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, flow_type, exchange, volume, parent_id):
+    def __init__(self, flow_type, exchange, volume):
         self.flow_type = flow_type
         self.exchange = exchange
         self.volume = volume
-        self.parent_id = parent_id
