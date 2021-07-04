@@ -9,14 +9,17 @@ from wallet_profiller import Counterparties
 
 from base import Base
 
+
 class Label(Base):
     __tablename__ = "label"
 
     id = Column(Integer, primary_key=True)
     name = Column(String(64), unique=True)
+    parent_id = Column(Integer, ForeignKey('address.id'))
 
-    def __init__(self, name):
+    def __init__(self, name, parent_id):
         self.name = name
+        self.parent_id = parent_id
 
 
 class TokenBalance(Base):
@@ -64,6 +67,7 @@ class Address(Base):
 
     id = Column(Integer, primary_key=True)
     address = Column(String(64), unique=True)
+    label = relationship(Label)
     eth_balance = Column(Float)
     token_balances = relationship(TokenBalance)
     daily_activities = relationship(DailyActivity)
@@ -77,4 +81,3 @@ class Address(Base):
         self.daily_activities = daily_activities
         self.hourly_activities = hourly_activities
         self.counter_parties = counter_parties
-
