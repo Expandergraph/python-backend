@@ -10,8 +10,13 @@ from top_balances import *
 from top_transactions import *
 from wallet_profiller import *
 
+USERNAME = ''
+PASSWORD = ''
+IP = ''
+PORT = '3306'
+DB = 'xpander'
 
-engine = create_engine('')
+engine = create_engine(f'mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{IP}:{PORT}/{DB}')
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
