@@ -17,7 +17,6 @@ class Counterparties(Base):
     flow_type = Column(Enum(EthFlowTypeEnum))
     exchange = Column(String(64))
     volume = Column(Float)
-    address = Column(String(64))
     parent_id = Column(Integer, ForeignKey('address.id'))
 
     def __init__(self, flow_type, exchange, volume):
