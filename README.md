@@ -12,4 +12,7 @@ The development environment is python 3.7
 Steps to setup database:
 - ```pip install -r requirements.txt```
 - put the desired parameters (USERNAME, PASSWORD, IP, PORT, DB) into /data_model/base.py
-- ```python3.7 /data_model/db_update.py```
+- ```python3 /data_model/db_update.py```
+
+# start the web server
+enter web folder, ```python3 server.py```
