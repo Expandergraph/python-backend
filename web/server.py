@@ -36,4 +36,4 @@ api.add_resource(NumUniqueAddresses, "/token/<string:token>/num_unique_addresses
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
