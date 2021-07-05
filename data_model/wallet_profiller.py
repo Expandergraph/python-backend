@@ -2,7 +2,7 @@ import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
 from sqlalchemy.orm import relationship
-from base import Base
+from data_model.base import Base
 
 
 class EthFlowTypeEnum(enum.Enum):
@@ -10,7 +10,7 @@ class EthFlowTypeEnum(enum.Enum):
     outgoing = 2
 
 
-class Counterparties(Base):
+class Counterparty(Base):
     __tablename__ = "counterparties"
 
     id = Column(Integer, primary_key=True)

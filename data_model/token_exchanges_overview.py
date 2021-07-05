@@ -2,7 +2,7 @@ import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
 from sqlalchemy.orm import relationship, sessionmaker
-from base import Base
+from data_model.base import Base
 
 
 class TokenBalanceTypeEnum(enum.Enum):
@@ -18,7 +18,7 @@ class TokenExchangeSupplyRatio(Base):
     ratio = Column(Float)
 
     def __init__(self, token, ratio):
-        self.name = token
+        self.token = token
         self.ratio = ratio
 
 
@@ -27,13 +27,16 @@ class TokenBalancesComparison(Base):
 
     id = Column(Integer, primary_key=True)
     token = Column(String(64))
-    type = Column(Enum(TokenBalanceTypeEnum))
-    pct_of_total_supply = Column(Float)
+    pct_of_dex_traders = Column(Float)
+    pct_of_exchanges = Column(Float)
+    date = Column(Date)
 
-    def __init__(self, token, type, pct_of_total_supply):
+
+    def __init__(self, token, pct_of_dex_traders, pct_of_exchanges, date):
         self.token = token
-        self.type = type
-        self.pct_of_total_supply = pct_of_total_supply
+        self.pct_of_dex_traders = pct_of_dex_traders
+        self.pct_of_exchanges = pct_of_exchanges
+        self.date = date
 
 
 class TokensOnExchanges(Base):

@@ -5,7 +5,7 @@ USERNAME = 'myuser'
 PASSWORD = 'mypass@bR2021'
 IP = '107.182.26.178'
 PORT = '3306'
-DB = 'xpander'
+DB = 'xpander2'
 
 engine = create_engine(f'mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{IP}:{PORT}/{DB}')
 DBSession = sessionmaker(bind=engine)
