@@ -2,10 +2,10 @@ import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
 from sqlalchemy.orm import relationship, sessionmaker
-from base import Base
+from data_model.base import Base
 
 
-class TopBalances(Base):
+class TopBalance(Base):
     __tablename__ = "top_balances"
 
     id = Column(Integer, primary_key=True)

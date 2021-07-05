@@ -7,45 +7,13 @@ from address_overview import *
 from wallet_profiler import *
 from top_labels import *
 from token_exchanges_overview import *
+from notable_wallets import *
+from top_transactions import *
+from top_balances import *
+from holders import *
 
 app = Flask(__name__)
 api = Api(app)
-
-
-class TokenVolumeOnExchanges(Resource):
-    def get(self, token):
-        pass
-
-
-class TopExchanges(Resource):
-    def get(self, token):
-        pass
-
-
-class NotableWallets(Resource):
-    def get(self, token):
-        pass
-
-
-class TopTransactions(Resource):
-    def get(self, token):
-        pass
-
-
-class TopBalance(Resource):
-    def get(self, token):
-        pass
-
-
-class SeniorityDistribution(Resource):
-    def get(self, token):
-        pass
-
-
-class NumUniqueAddresses(Resource):
-    def get(self, token):
-        pass
-
 
 api.add_resource(Labels, "/address/<string:address>/labels", endpoint='labels')
 api.add_resource(EthBalance, "/address/<string:address>/eth_balance", endpoint='eth_balance')
@@ -62,8 +30,8 @@ api.add_resource(TokenVolumeOnExchanges, "/token/<string:token>/volume_on_exchan
 api.add_resource(TopExchanges, "/token/<string:token>/top_exchanges", endpoint='top_exchanges')
 api.add_resource(NotableWallets, "/token/<string:token>/notable_wallets", endpoint='notable_wallets')
 api.add_resource(TopTransactions, "/token/<string:token>/top_transactions", endpoint='top_transactions')
-api.add_resource(TopBalance, "/token/<string:token>/top_balances", endpoint='top_balances')
-api.add_resource(SeniorityDistribution, "/token/<string:token>/seniority_distribution", endpoint='seniority_distribution')
+api.add_resource(TopBalances, "/token/<string:token>/top_balances", endpoint='top_balances')
+api.add_resource(SeniorityDistributions, "/token/<string:token>/seniority_distribution", endpoint='seniority_distribution')
 api.add_resource(NumUniqueAddresses, "/token/<string:token>/num_unique_addresses", endpoint='num_unique_addresses')
 
 

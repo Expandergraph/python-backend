@@ -2,9 +2,10 @@ import enum
 
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Date, Enum
 from sqlalchemy.orm import relationship
-from base import Base
+from data_model.base import Base
 
-class NotableWallets(Base):
+
+class NotableWallet(Base):
     __tablename__ = "notable_wallets"
 
     id = Column(Integer, primary_key=True)
@@ -16,7 +17,7 @@ class NotableWallets(Base):
     depositors = Column(String(256))
     recipients = Column(String(256))
 
-    def __init__(self, token, name, change, balance, first_in, depositors, recipients):
+    def __init__(self, token, name, change, balance, first_in, depositors="", recipients=""):
         self.token = token
         self.name = name
         self.change = change
