@@ -11,5 +11,5 @@ API list: https://private-f7f12f4-xpander.apiary-mock.com/
 The development environment is python 3.7
 Steps to setup database:
 - ```pip install -r requirements.txt```
-- put the desired parameters (USERNAME, PASSWORD, IP, PORT, DB) into /data_model/db_update.py
+- put the desired parameters (USERNAME, PASSWORD, IP, PORT, DB) into /data_model/base.py
 - ```python3.7 /data_model/db_update.py```
