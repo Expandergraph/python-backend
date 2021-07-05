@@ -1,38 +1,14 @@
+import sys
+sys.path.append("..")
 from flask import Flask
 from flask_restful import Api, Resource
+
+from address_overview import *
 
 app = Flask(__name__)
 api = Api(app)
 
 
-class Labels(Resource):
-    def get(self, address):
-        pass
-
-
-class EthBalance(Resource):
-    def get(self, address):
-        pass
-
-
-class TokenBalances(Resource):
-    def get(self, address):
-        pass
-
-
-class DailyActivities(Resource):
-    def get(self, address):
-        pass
-
-
-class DayActivities(Resource):
-    def get(self, address, days):
-        pass
-
-
-class HourActivities(Resource):
-    def get(self, address, hours):
-        pass
 
 
 class InEth(Resource):
@@ -98,7 +74,7 @@ class NumUniqueAddresses(Resource):
 api.add_resource(Labels, "/address/<string:address>/labels", endpoint='labels')
 api.add_resource(EthBalance, "/address/<string:address>/eth_balance", endpoint='eth_balance')
 api.add_resource(TokenBalances, "/address/<string:address>/token_balances", endpoint='token_balances')
-api.add_resource(DailyActivities, "/address/{address}/daily_activities/{date_range}", endpoint='daily_activities')
+api.add_resource(DailyActivities, "/address/<string:address>/daily_activities", endpoint='daily_activities')
 api.add_resource(DayActivities, "/address/{address}/day_activities/{days}", endpoint='day_activities')
 api.add_resource(HourActivities, "/address/{address}/hour_activities/{hours}", endpoint='hour_activities')
 api.add_resource(InEth, "/address/{address}/in_eth", endpoint='in_eth')
