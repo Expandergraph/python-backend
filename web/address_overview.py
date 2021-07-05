@@ -34,9 +34,11 @@ class DailyActivities(Resource):
 
 class DayActivities(Resource):
     def get(self, address, days):
-        pass
+        # put dummy data here first
+        return jsonify([5, 2, 13, 14, 15, 12, 10])
 
 
 class HourActivities(Resource):
     def get(self, address, hours):
-        pass
+        # put dummy data here first
+        return jsonify([5,2,0,3,10,4,5,3,2,10,1,4,5,3,7,6,8,4,3,2,5,4,6,3])
