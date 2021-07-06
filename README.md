@@ -15,4 +15,4 @@ Steps to setup database:
 - ```python3 /data_model/db_update.py```
 
 # start the web server
-enter web folder, ```python3 server.py```
+enter web folder, ```gunicorn -w 4 server:app --bind=0.0.0.0:5000 --daemon```
