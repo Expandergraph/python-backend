@@ -12,7 +12,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
 itsdangerous==0.24
 Jinja2==2.10
-MarkupSafe==1.0
+MarkupSafe==1.1
 Pillow==5.3.0
 pycparser==2.18
 six==1.11.0
@@ -20,3 +20,6 @@ SQLAlchemy==1.2.7
 Werkzeug==0.14.1
 WTForms==2.1
 mysql-connector-python==8.0.25
+gunicorn=20.1.0
+flask-cors=3.0.10
+substrate-interface=0.13.9
