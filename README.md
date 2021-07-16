@@ -15,4 +15,8 @@ Steps to setup database:
 - ```python3 /data_model/db_update.py```
 
 # start the web server
-enter web folder, ```gunicorn -w 4 server:app --bind=0.0.0.0:5000 --daemon```
+enter web folder, ```gunicorn -w 4 server:app --bind=0.0.0.0:5000 --daemon --access-logfile /home/ec2-user/log/access_file_g.log --error-logfile /home/ec2-user/log/error_file_g.log --capture-output```
+
+# check log (according to the web starting CLI)
+- /home/ec2-user/log/access_file_g.log    
+- /home/ec2-user/log/error_file_g.log
